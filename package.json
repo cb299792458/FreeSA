@@ -1,0 +1,24 @@
+{
+  "name": "freesa",
+  "version": "1.0.0",
+  "description": "A Free DS&amp;A App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cb299792458/FreeSA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cb299792458/FreeSA/issues"
+  },
+  "homepage": "https://github.com/cb299792458/FreeSA#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
