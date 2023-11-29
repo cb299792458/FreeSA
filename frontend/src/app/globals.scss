@@ -19,13 +19,20 @@ $text-visited: rgb(158, 0, 0);
 }
 a {
   color: $text-emphasis;
+  transition: color 0.2s;
   &:visited{
     color: $text-visited;
+  }
+  &:hover{
+    color: $text-emphasis;
   }
 }
 body {
   line-height: calc(1em + 0.5rem);
   -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
 }
 img, picture, video, canvas, svg {
   display: block;

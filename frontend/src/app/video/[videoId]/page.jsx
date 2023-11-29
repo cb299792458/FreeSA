@@ -11,7 +11,7 @@ export default function VideoShow({ params }){
     
     const { id, resourceId, src, resourceType } = videos[videoId];
     return(
-        <main style={{height: "100vh", width:"100vw", textAlign: "center"}}>
+        <main style={{height: "100%", width:"100%", textAlign: "center"}}>
 
             <h1>Video {id}</h1>
             <p>Host: {resourceType}</p>
