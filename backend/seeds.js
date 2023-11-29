@@ -14,8 +14,7 @@ const seedData = async () => {
 
         const hashedUserSeedData = await Promise.all(
             userSeedData.map(async (user) => {
-                const salt = await bcrypt.genSalt(10);
-                const hashedPassword = await bcrypt.hash(user.password, salt);
+                const hashedPassword = await bcrypt.hash(user.password, 10);
                 return {...user, hashedPassword};
             })
         )

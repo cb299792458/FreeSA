@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3001;
+app.use(express.json())
 
 const mongoose = require('./db');
 mongoose.on('error', console.error.bind(console, 'MongoDB Connection Error'));
