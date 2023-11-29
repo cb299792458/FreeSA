@@ -7,7 +7,7 @@ export default function SideBar(){
     return(
         <div id="sidebar">
             <nav className="menu-options">
-                <li>Home</li>
+            <Link href="/"><li>Home</li></Link>
                 <li>New Videos</li>
                 <li>Saved Videos</li>
                 <li>Random Video</li>

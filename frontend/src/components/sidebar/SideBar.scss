@@ -22,14 +22,21 @@ $background-light: rgb(42, 45, 49);
     width: 100%;
     height: max-content;
     padding-top: 10px;
+    a{
+        // display:block;
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+    }
     li{
         padding: 5px 10px;
         margin: 5px 0;
         cursor: pointer;
         list-style: none;
+        transition: 0.2s;
     }
     li:hover{
-        background-color: green;
+        background-color: rgb(215, 0, 0);
     }
 }
 
