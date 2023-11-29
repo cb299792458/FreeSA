@@ -14,7 +14,9 @@ function Hamburger(){
     document.addEventListener('click', hide);
   }
   return(
-    <span id="hamburger" onClick={hamburgerClick}>Hamburger Icon</span> 
+    <span id="hamburger-container" onClick={hamburgerClick}>
+      <span id="hamburger" ></span> 
+    </span>
   )
 }
 
