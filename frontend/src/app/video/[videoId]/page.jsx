@@ -11,10 +11,12 @@ export default function VideoShow({ params }){
     
     const { id, resourceId, src, resourceType } = videos[videoId];
     return(
-        <main style={{height: "100vh", width:"100vw", textAlign: "center", padding: "100px 0"}}>
-            <h1>VideoId: {videoId}</h1>
-            <p>Resource: {JSON.stringify(videos[videoId])}</p>
-            <Link href="/">Back to Root</Link><br/>
+        <main style={{height: "100vh", width:"100vw", textAlign: "center"}}>
+
+            <h1>Video {id}</h1>
+            <p>Host: {resourceType}</p>
+            <p>Resource Id: {resourceId}</p>
+
             <iframe
                 src={src}
                 title="YouTube video player"
@@ -22,14 +24,18 @@ export default function VideoShow({ params }){
                 allowFullScreen
             >
             </iframe>
+
             <h5>Navigation</h5>
+            <Link href="/">Home</Link><br/>
             <nav style={{display: "flex", flexDirection: "column"}}>
-                <Link href="./index">Back to Index</Link>
+                <Link href="./index">All Videos</Link>
                 {Object.entries(videos).map(([id, video]) => {
                     return <Link key={id} href={`./${id}`}>Video {id}</Link>
                 })}
                 <Link href="./1000">This video doesn't exist.</Link>
             </nav>
+
+            
         </main>
     )
 }
