@@ -1,30 +1,38 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const db = require('./db');
+const User = require('./models/User');
 
-mongoose.connect('mongodb+srv://freesa-admin:Xw8VPBTYJpWDnJZM@freesa.ydwtfsr.mongodb.net/?retryWrites=true&w=majority');
+const userSeedData = [
+    {email: 'brianrlam@gmail.com', password: 'password'},
+    {email: 'clarencesmith90@gmail.com', password: 'password'},
+];
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+const seedData = async () => {
+    try {
+        await User.deleteMany();
 
-const brian = new User({
-    username: 'brian',
-    password: 'password', // Make sure to hash passwords before storing
-});
-  
-brian.save((err, user) => {
-    if (err) return console.error(err);
-    console.log('User saved:', user);
-});
+        const hashedUserSeedData = await Promise.all(
+            userSeedData.map(async (user) => {
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(user.password, salt);
+                return {...user, hashedPassword};
+            })
+        )
+        await User.insertMany(hashedUserSeedData);
 
-const clarence = new User({
-    username: 'clarence',
-    password: 'password', // Make sure to hash passwords before storing
+        console.log('Seeding Successful');
+    } catch (error) {
+        console.error(error);
+    } finally {
+        db.close();
+    }
+}
+
+db.on('open', () => {
+    console.log('Connected to MongoDB for Seeding');
+    seedData();
 });
-  
-clarence.save((err, user) => {
-    if (err) return console.error(err);
-    console.log('User saved:', user);
+db.on('error', (error) => {
+    console.error(error);
 });
-  

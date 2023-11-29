@@ -4,14 +4,15 @@ const Schema = mongoose.Schema;
 const userSchema = Schema({
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     hashedPassword: {
         type: String,
-        required: true
+        required: true,
     }
-}, {
-    timestamps: true
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
