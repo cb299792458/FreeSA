@@ -10,6 +10,9 @@ mongoose.once('open', () => console.log('Connected to MongoDB'));
 const userRoutes = require('./routes/user');
 app.use('/api/user', userRoutes);
 
+const videoRoutes = require('./routes/video');
+app.use('/api/video', videoRoutes);
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
