@@ -15,7 +15,7 @@ router.get('/index', async (_req, res) => {
         console.error(error);
         res.status(500).json({error: 'Internal Server Error'});
     }
-})
+});
 
 router.get('/:num', async (req, res) => {
     const num = req.params.num;
@@ -30,5 +30,19 @@ router.get('/:num', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 })
+
+router.post('/new', async (req, res) => {
+    try {
+        const video = req.body;
+        const newVideo = new Video(video);
+    
+        await newVideo.save();
+    
+        res.status(201).json({ message: 'Video uploaded successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 module.exports = router;

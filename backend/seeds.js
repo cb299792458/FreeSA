@@ -18,6 +18,26 @@ const videoSeedData = [
         ghUrl: 'https://github.com/cb299792458/LeetHub/blob/main/0494-target-sum/0494-target-sum.py',
         ytUrl: 'https://youtu.be/m5yxkqYzFpE',
     },
+    {
+        num: 121,
+        title: 'Best Time to Buy and Sell Stock',
+        difficulty: 'easy',
+        lcUrl: 'https://leetcode.com/problems/best-time-to-buy-and-sell-stock/',
+        ghUrl: 'https://github.com/cb299792458/LeetHub/blob/main/0121-best-time-to-buy-and-sell-stock/0121-best-time-to-buy-and-sell-stock.py',
+        ytUrl: 'https://youtu.be/mqw_dWYr7kY',
+        references: [
+            'https://www.freecodecamp.org/news/time-complexity-of-algorithms/',
+            'https://www.geeksforgeeks.org/understanding-time-complexity-simple-examples/',
+        ]
+    },
+    {
+        num: 125,
+        title: 'Valid Palindrome',
+        difficulty: 'easy',
+        lcUrl: 'https://leetcode.com/problems/valid-palindrome/',
+        ghUrl: 'https://github.com/cb299792458/LeetHub/blob/main/0125-valid-palindrome/0125-valid-palindrome.py',
+        ytUrl: 'https://youtu.be/Msk1QdDamoA',
+    },
 ]
 
 const seedData = async () => {
