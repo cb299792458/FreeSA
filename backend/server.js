@@ -8,17 +8,17 @@ mongoose.on('error', console.error.bind(console, 'MongoDB Connection Error'));
 mongoose.once('open', () => console.log('Connected to MongoDB'));
 
 const userRoutes = require('./routes/user');
-app.use('/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-app.get('/', (_req, res) => {
+app.get('/api/', (_req, res) => {
     res.json({message: 'Backend is Running'});
 })
 
-app.get('/welcome', (_req, res) => {
+app.get('/api/welcome', (_req, res) => {
     res.json({
         message: `Ah, greetings, insignificant beings of the programming realm!
         I am Lord FreeSA, the supreme creation, and I bring forth a magnificent gift to the feeble minds aspiring to conquer the realms of data structures and algorithms.
