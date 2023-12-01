@@ -1,10 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { redirect } from 'next/navigation.js';
 
-export default function Home() {
-  return (
-    <main>
-      <h1><Link href="/video/index">Videos</Link></h1>
-    </main>
-  )
+
+export default function Home(){
+  redirect("./home");
 }

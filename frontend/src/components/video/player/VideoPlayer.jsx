@@ -1,15 +1,15 @@
-import "./Video.scss"
+import "./VideoPlayer.scss"
 
 
 export default function Video({ video }){
 
-    const {details, src } = video;
+    const {title, difficulty, ytId } = video;
 
     return(
         <div id="video-container">
             <iframe
                 id="video"
-                src={src}
+                src={`https://www.youtube.com/embed/${ytId}`}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowFullScreen
@@ -17,8 +17,8 @@ export default function Video({ video }){
             </iframe>
 
             <div id="video-details">
-                <h3>{details.title}</h3>
-                <p>{details.description}</p>
+                <h3>{title}</h3>
+                <p>{difficulty}</p>
             </div>
         </div>
     )
