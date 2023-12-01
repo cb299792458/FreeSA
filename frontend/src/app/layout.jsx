@@ -22,7 +22,6 @@ export default function RootLayout({ children }) {
             <img id="logo" src='https://trnkt-dev.s3.amazonaws.com/Logo_Small.png'/>
             FreeSA
           </Link>
-          <h1>Header</h1>
           <Hamburger />
         </header>
         {children}
