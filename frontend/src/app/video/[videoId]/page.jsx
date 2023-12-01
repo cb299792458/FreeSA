@@ -13,7 +13,7 @@ export default function VideoShow({ params }){
     const { resourceId, resourceType } = videos[videoId];
     const video = videos[videoId];
     return(
-        <main style={{height: "100%", width:"100%", textAlign: "center", display:"flex"}}>
+        <main>
             <section id="video-left">
                 <Video video={video} />
 
