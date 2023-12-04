@@ -1,0 +1,58 @@
+/*
+  This CSS Reset uses Josh's as a base.
+  https://www.joshwcomeau.com/css/custom-css-reset/
+  I am using Sass variables for ease of use.
+*/
+
+$text-primary: rgb(219, 219, 219);
+$text-secondary: rgb(163, 161, 161);
+$text-success: rgb(70, 150, 70);
+$text-emphasis: rgb(223, 0, 0);
+$text-visited: rgb(158, 0, 0);
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  color: $text-primary;
+}
+a {
+  color: $text-emphasis;
+  transition: color 0.2s;
+  &:visited{
+    color: $text-visited;
+  }
+  &:hover{
+    color: $text-emphasis;
+  }
+}
+
+body {
+  line-height: calc(1em + 0.5rem);
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+#root, #__next {
+  isolation: isolate;
+}
+
+main{
+  background-color: rgb(32, 34, 40);
+  padding: 10px 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;  
+}

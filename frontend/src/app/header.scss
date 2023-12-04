@@ -1,0 +1,58 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vh 3vw;
+  background-color: rgb(42, 45, 49);
+  border-bottom: 2px solid black;
+  box-sizing: border-box;
+}
+
+
+#logo-container{
+  cursor: pointer;
+  position: relative;
+  color: red;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  text-decoration: none;
+  #logo{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left: 8px;
+    bottom: 3px;
+  }
+}
+
+#hamburger-container{
+  width: 32px;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+#hamburger{
+  position: absolute;
+  top: 12px;
+  width: 30px;
+  border: 1px solid whitesmoke;
+  &::after{
+    content: '';
+    width: 30px;
+    position: absolute;
+    left: -1px;
+    top: 7px;
+    border: inherit;
+  }
+  &::before{
+    content: '';
+    width: 30px;
+    position: absolute;
+    left: -1px;
+    bottom: 6px;
+    border: inherit;
+  }
+}

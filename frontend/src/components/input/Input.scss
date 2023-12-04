@@ -1,0 +1,20 @@
+.controlledInput{
+    margin: 10px 20px;
+}
+
+
+
+label:has(input:focus){
+    font-weight: bolder;
+}
+
+.inputError{
+    visibility:hidden;
+    color: rgb(255, 117, 117);
+}
+
+input {
+    // width: 100%;
+    color: black;
+    transition: 0.2s;
+}
