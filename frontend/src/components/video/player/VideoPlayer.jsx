@@ -3,7 +3,8 @@ import "./VideoPlayer.scss"
 
 export default function Video({ video }){
 
-    const {title, difficulty, ytId } = video;
+    const {title, difficulty, ytUrl } = video;
+    const ytId = ytUrl?.split("/").at(-1);
 
     return(
         <div id="video-container">
