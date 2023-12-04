@@ -48,7 +48,7 @@ const seedData = async () => {
                 const hashedPassword = await bcrypt.hash(user.password, 10);
                 return {...user, hashedPassword};
             })
-        )
+        );
         await User.insertMany(hashedUserSeedData);
 
         await Video.deleteMany();
