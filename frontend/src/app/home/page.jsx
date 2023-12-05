@@ -3,10 +3,20 @@ import Link from 'next/link'
 import data from "@/app/mockData.js";
 import "./home.scss";
 import VideoCard from '@/components/video/card/VideoCard';
+import axios from 'axios';
+import { notFound } from 'next/navigation';
 
 
-export default function Home(){
-  const videos = data.videos;
+export default async function Home(){
+  let videos;
+
+  const fetchData = async () => {
+      const response = await axios.get(`http://localhost:3000/api/video/index`);
+      videos = response.data;
+  }
+
+  await fetchData().catch((err) => notFound());
+
   return(
       <main>
         <section id="home-left">
