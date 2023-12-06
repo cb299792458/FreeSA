@@ -54,7 +54,10 @@ router.post('/signin', async (req, res) => {
             return res.status(401).json({error: 'Invalid username or password'});
         }
 
-        res.json({ message: 'Sign In Successful' });
+        res.json({
+            message: 'Sign In Successful',
+            user,
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({error: 'Internal Server Error in User Log In'});
@@ -62,7 +65,6 @@ router.post('/signin', async (req, res) => {
 });
 
 router.get('/confirm', async (req, res) => {
-    console.log(req.query)
     try {
         const {email, token} = req.query;
         const user = await User.findOne({email});
