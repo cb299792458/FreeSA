@@ -64,7 +64,10 @@ router.post('/signup', async (req, res) => {
 
         sendConfirmationEmail(email, newUser.emailToken);
 
-        res.status(201).json({message: 'Sign Up Successful'});
+        res.status(201).json({
+            message: 'Sign Up Successful',
+            user: newUser,
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({error: 'Internal Server Error in User Registration'});
@@ -73,16 +76,16 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const {email, password} = req.body;
 
-        const user = await User.findOne({username});
+        const user = await User.findOne({email});
         if (!user) {
-            return res.status(401).json({error: 'Invalid username or password'});
+            return res.status(401).json({error: 'Invalid email or password'});
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.hashedPassword);
         if (!isPasswordValid) {
-            return res.status(401).json({error: 'Invalid username or password'});
+            return res.status(401).json({error: 'Invalid email or password'});
         }
 
         res.json({

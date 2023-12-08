@@ -1,16 +1,13 @@
 "use client";
 import Input from "@/components/input/Input";
 import axios from "axios";
-import { redirect } from "next/navigation";
-// import { useRouter } from "next/router";
+// import { redirect } from "next/navigation";
 import { useState } from "react"
 
 export default function SignIn(){
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    // const router = useRouter();
 
     const sessionUser = JSON.parse(localStorage.getItem('sessionUser'));
     if (sessionUser) console.log('You are logged in as:', sessionUser);
@@ -24,10 +21,9 @@ export default function SignIn(){
             }, {
                 headers: {'Content-Type': 'application/json'}
             });
-
+            
             localStorage.setItem('sessionUser', JSON.stringify(res.data.user));
-            // router.push('/home');
-            return redirect('/home');
+            // redirect('/home');
         } catch (error) {
             console.error(error);
         }
@@ -35,8 +31,7 @@ export default function SignIn(){
 
     const logout = () => {
         localStorage.removeItem('sessionUser');
-        // router.push('/home');
-        return redirect('/home');
+        // redirect('/home');
     };
 
     return(
