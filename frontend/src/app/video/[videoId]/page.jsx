@@ -1,4 +1,3 @@
-import data from '@/app/mockData';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import VideoPlayer from '@/components/video/player/VideoPlayer';
@@ -6,15 +5,15 @@ import axios from 'axios';
 // import { useEffect } from 'react';
 
 export default async function VideoShow({ params }){
-    // const videos = data.videos;
     const { videoId } = params;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
     var video;
     var relatedVideos;
-
+        
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:3000/api/video/${videoId}`);
-        const response2 = await axios.get(`http://localhost:3000/api/video/index`);
+        const response = await axios.get(`${baseUrl}/api/video/${videoId}`);
+        const response2 = await axios.get(`${baseUrl}/api/video/index`);
         video = response.data;
         relatedVideos = response2.data.sort((a, b) => a.num - b.num);
     };

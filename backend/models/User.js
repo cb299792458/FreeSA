@@ -10,6 +10,17 @@ const userSchema = Schema({
     hashedPassword: {
         type: String,
         required: true,
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    emailConfirmed: {
+        type: Boolean,
+        default: false,
+    },
+    emailToken: {
+        type: String,
     }
 });
 

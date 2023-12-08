@@ -5,8 +5,22 @@ const User = require('./models/User');
 const Video = require('./models/Video');
 
 const userSeedData = [
-    {email: 'brianrlam@gmail.com', password: 'password'},
-    {email: 'clarencesmith90@gmail.com', password: 'password'},
+    {
+        email: 'brianrlam@gmail.com',
+        password: 'password',
+        isAdmin: true,
+        emailConfirmed: true,
+    },
+    {
+        email: 'clarencesmith90@gmail.com',
+        password: 'password',
+        isAdmin: true,
+        emailConfirmed: true,
+    },
+    {
+        email: 'demo@user.com',
+        password: 'password',
+    }
 ];
 
 const videoSeedData = [
@@ -38,6 +52,22 @@ const videoSeedData = [
         ghUrl: 'https://github.com/cb299792458/LeetHub/blob/main/0125-valid-palindrome/0125-valid-palindrome.py',
         ytUrl: 'https://youtu.be/Msk1QdDamoA',
     },
+    {
+        num: 141,
+        title: 'Linked List Cycle',
+        difficulty: 'easy',
+        lcUrl: 'https://leetcode.com/problems/linked-list-cycle/',
+        ghUrl: 'https://github.com/cb299792458/LeetHub/blob/main/0141-linked-list-cycle/0141-linked-list-cycle.py',
+        ytUrl: 'https://youtu.be/07eRfdVXu4k',
+    },
+    {
+        num: 1688,
+        title: 'Count of Matches in Tournament',
+        difficulty: 'easy',
+        lcUrl: 'https://leetcode.com/problems/count-of-matches-in-tournament/',
+        ghUrl: '',
+        ytUrl: 'https://youtu.be/Wx9S9ArG1qk',
+    }
 ]
 
 const seedData = async () => {
