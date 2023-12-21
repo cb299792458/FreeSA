@@ -43,7 +43,7 @@ export default async function VideoShow({ params }){
                     {Object.entries(relatedVideos).map(([id, video]) => {
                         return <Link key={id} href={`./${video.num}`}>{video.num +". "+video.title}</Link>
                     })}
-                    <Link href="./1000">This video doesn't exist.</Link>
+                    <Link href="./1000">This video doesn&apos;t exist.</Link>
                 </nav>
                 <ol>
                     <li>Suggested Videos</li>

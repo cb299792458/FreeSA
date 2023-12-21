@@ -4,6 +4,7 @@ import SideBar from '@/components/sidebar/SideBar';
 import Hamburger from '@/components/sidebar/Hamburger';
 import './globals.scss'
 import './header.scss'
+import Image from 'next/image';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
         <header className="header">
           <SideBar />
           <Link id="logo-container" href="/">
-            <img id="logo" src='https://trnkt-dev.s3.amazonaws.com/Logo_Small.png'/>
+            <Image id="logo" src='https://trnkt-dev.s3.amazonaws.com/Logo_Small.png' alt=''/>
             FreeSA
           </Link>
           <Hamburger />
