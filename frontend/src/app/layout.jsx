@@ -13,19 +13,19 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <header className="header">
-          <SideBar />
-          <Link id="logo-container" href="/">
-            <img id="logo" src='https://trnkt-dev.s3.amazonaws.com/Logo_Small.png'/>
-            FreeSA
-          </Link>
-          <Hamburger />
-        </header>
-        {children}
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+        <body className={inter.className}>
+            <header className="header">
+                <SideBar />
+                <Link id="logo-container" href="/">
+                    <img id="logo" src='https://trnkt-dev.s3.amazonaws.com/Logo_Small.png'/>
+                    FreeSA
+                </Link>
+                <Hamburger />
+            </header>
+            {children}
+        </body>
+        </html>
+    )
 }

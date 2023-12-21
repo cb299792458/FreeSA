@@ -1,37 +1,32 @@
 "use client";
 import Input from "@/components/input/Input";
 import axios from "axios";
-// import { redirect } from "next/navigation";
 import { useState } from "react"
+import { signIn } from 'next-auth/react';
 
 export default function SignIn(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-    const sessionUser = JSON.parse(localStorage.getItem('sessionUser'));
-    if (sessionUser) console.log('You are logged in as:', sessionUser);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`${baseUrl}/api/user/signin`, {
+            const result = await signIn('credentials', {
+                redirect: false,
                 email,
                 password,
-            }, {
-                headers: {'Content-Type': 'application/json'}
             });
-            
-            localStorage.setItem('sessionUser', JSON.stringify(res.data.user));
-            // redirect('/home');
+
+            console.log('Login Successful', result);
+
         } catch (error) {
             console.error(error);
-        }
+        };
     };
 
     const logout = () => {
-        localStorage.removeItem('sessionUser');
-        // redirect('/home');
+        
     };
 
     return(
