@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link';
 import SideBar from '@/components/sidebar/SideBar';
 import Hamburger from '@/components/sidebar/Hamburger';
+import logo from 'public/Logo_Small.png';
 import './globals.scss'
 import './header.scss'
 import Image from 'next/image';
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
         <header className="header">
           <SideBar />
           <Link id="logo-container" href="/">
-            <Image id="logo" src='https://trnkt-dev.s3.amazonaws.com/Logo_Small.png' alt=''/>
+            <Image id="logo" width={100} height={100} src={logo} alt=''/>
             FreeSA
           </Link>
           <Hamburger />
