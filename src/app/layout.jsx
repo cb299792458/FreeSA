@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link';
 import SideBar from '@/components/sidebar/SideBar';
 import Hamburger from '@/components/sidebar/Hamburger';
-import logo from 'public/Logo_Small.png';
+import logo from '../../public/Logo_Small.png';
 import './globals.scss'
 import './header.scss'
 import Image from 'next/image';
