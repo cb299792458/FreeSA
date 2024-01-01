@@ -12,8 +12,8 @@ export default async function VideoShow({ params }){
     var relatedVideos;
         
     const fetchData = async () => {
-        const response = await axios.get(`${baseUrl}/api/video/${videoId}`);
-        const response2 = await axios.get(`${baseUrl}/api/video/index`);
+        const response = await axios.get(`${baseUrl}/api/videos/${videoId}`);
+        const response2 = await axios.get(`${baseUrl}/api/videos/index`);
         video = response.data;
         relatedVideos = response2.data.sort((a, b) => a.num - b.num);
     };
