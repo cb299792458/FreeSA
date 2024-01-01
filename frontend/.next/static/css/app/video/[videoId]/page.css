@@ -1,0 +1,42 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[2]!../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[13].use[3]!../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[12].oneOf[13].use[4]!../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[12].oneOf[13].use[5]!./src/components/video/player/VideoPlayer.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+#video-left {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+}
+#video-left ul {
+  padding: 0;
+}
+#video-left ul li {
+  list-style-type: none;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  background-color: grey;
+  width: 50vw;
+}
+
+#video-right {
+  padding: 20px;
+  width: 50%;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-left: 1vw;
+}
+
+#video-container iframe {
+  width: 50vw;
+  height: 50vh;
+}
+#video-container #video-details {
+  background-color: grey;
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 50vw;
+}
+
+main {
+  padding: 10px 7vw;
+}
