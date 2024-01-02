@@ -2,11 +2,10 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import VideoPlayer from '@/components/video/player/VideoPlayer';
 import axios from 'axios';
-// import { useEffect } from 'react';
 
 export default async function VideoShow({ params }){
     const { videoId } = params;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     var video;
     var relatedVideos;

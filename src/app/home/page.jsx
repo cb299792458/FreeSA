@@ -1,9 +1,16 @@
-import data from "@/app/mockData.js";
 import "./home.scss";
 import VideoCard from '@/components/video/card/VideoCard';
+import axios from "axios";
 
-export default function Home(){
-    const videos = data.videos;
+export default async function Home(){
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    let videos = [];
+    const fetchVideos = async () => {
+        const response = await axios.get(`${baseUrl}/api/videos/index`);
+        videos = response.data;
+    };
+    await fetchVideos().catch((err) => notFound());
+    
     return(
         <main>
             <section id="home-left">
