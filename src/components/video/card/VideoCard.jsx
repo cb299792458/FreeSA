@@ -2,28 +2,15 @@ import Link from "next/link";
 import "./VideoCard.scss"
 
 
-export default async function VideoCard({ video }){
+export default function VideoCard({ video }){
 
-    const { title, difficulty, num } = video;
+    const { title, difficulty, num, thumbnailUrl, duration } = video;
     
-    const { google } = require('googleapis');
-    const td = require('tinyduration');
-
-    const youtube = google.youtube({
-        version: 'v3',
-        auth: process.env.REACT_APP_YOUTUBE_API_KEY
-    });
+    debugger;
     
-    const youTubeResource = await youtube.videos.list({
-        id: video.ytUrl.split("/").at(-1), // YouTube Resource Id
-        part: ['snippet', 'contentDetails'], // Basic Resource Info
-    });
-
-    const thumbnailUrl = youTubeResource.data.items[0].snippet.thumbnails.medium.url;
-    const duration = td.parse(youTubeResource.data.items[0].contentDetails.duration);
 
     return(
-        <li id="video-card">
+        <li className="video-grid-item video-card">
             <img id="thumbnail" src={thumbnailUrl} />
             <Link href={`/video/${num}`}>{num +". "+title}</Link>
             <p>{difficulty} — {duration.minutes+":"+duration.seconds}</p>
