@@ -1,4 +1,3 @@
-import data from '@/app/mockData';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import VideoPlayer from '@/components/video/player/VideoPlayer';
