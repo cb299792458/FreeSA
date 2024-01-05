@@ -54,7 +54,6 @@ router.get('/:num', async (req, res) => {
     
         video.thumbnailUrl = youTubeResource.data.items[0].snippet.thumbnails.medium.url;
         video.duration = td.parse(youTubeResource.data.items[0].contentDetails.duration);
-        console.log(video);
         res.json(video);
     } catch (error) {
         console.error(error);

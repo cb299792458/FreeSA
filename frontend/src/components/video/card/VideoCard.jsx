@@ -6,8 +6,6 @@ export default function VideoCard({ video }){
 
     const { title, difficulty, num, thumbnailUrl, duration } = video;
     
-    debugger;
-    
 
     return(
         <li className="video-grid-item video-card">
