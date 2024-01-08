@@ -1,6 +1,8 @@
 import "./home.scss";
 import VideoCard from '@/components/video/card/VideoCard';
 import axios from "axios";
+import { notFound } from 'next/navigation';
+
 
 export default async function Home(){
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
