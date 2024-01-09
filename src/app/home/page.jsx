@@ -21,7 +21,7 @@ export default async function Home(){
             <section id="home-right">
             <ol>
                 {Object.entries(videos).map(([num, video]) => (
-                    <VideoCard key={video._id} video={video} />
+                    <VideoCard key={num} video={video} />
                 ))}
             </ol>
             </section>
