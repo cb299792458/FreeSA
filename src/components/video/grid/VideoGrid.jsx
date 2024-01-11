@@ -1,5 +1,3 @@
-// import Image from 'next/image';
-// import Link from 'next/link';
 import './VideoGrid.scss';
 import VideoCard from '../card/VideoCard';
 import { durationMap } from '../filter/VideoFilter';
@@ -11,19 +9,17 @@ export default function VideoGrid({filter}){
     const [fetchedVideos, setFetchedVideos] = useState([]);
     const [videos, setVideos] = useState([]);
     const {difficulty, duration} = filter;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   
-    const fetchData = () => {
-        return axios.get(`http://localhost:3000/api/video/index`)
-            .then((response) => {
-                setFetchedVideos(response.data);
-            });
-    }
     useEffect(() => {
-        fetchData().then().catch((err) => notFound());
+        const fetchData = async () => {
+            const response = await axios.get(`${baseUrl}/api/videos/index`)
+            setFetchedVideos(response.data);
+        }
+        fetchData();
     }, [])
 
     useEffect(() => {
-
         const v = Object.entries(fetchedVideos);
         if(difficulty.length === 0 && duration.length === 0){
             setVideos(v);
