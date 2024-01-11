@@ -1,6 +1,6 @@
 "use client"
 import "./home.scss";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import VideoGrid from '../../components/video/grid/VideoGrid';
 import VideoFilter from "@/components/video/filter/VideoFilter";
 

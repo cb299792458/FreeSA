@@ -5,7 +5,7 @@ export default function Test(){
 
   const youtube = google.youtube({
     version: 'v3',
-    auth: process.env.REACT_APP_YOUTUBE_API_KEY
+    auth: process.env.YOUTUBE_API_KEY
   });
   
   const video = youtube.videos.list({

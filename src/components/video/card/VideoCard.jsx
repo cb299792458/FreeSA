@@ -5,13 +5,12 @@ import "./VideoCard.scss"
 export default function VideoCard({ video }){
 
     const { title, difficulty, num, thumbnailUrl, duration } = video;
-    
 
     return(
         <li className="video-grid-item video-card">
             <img id="thumbnail" src={thumbnailUrl} />
             <Link href={`/video/${num}`}>{num +". "+title}</Link>
-            <p>{difficulty} — {duration.minutes+":"+duration.seconds}</p>
+            <p>{difficulty} — {duration?.minutes+":"+('00'+duration?.seconds).slice(-2)}</p>
         </li>
     )
 }
