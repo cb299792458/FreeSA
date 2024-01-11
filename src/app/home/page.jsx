@@ -1,30 +1,28 @@
+"use client"
 import "./home.scss";
-import VideoCard from '@/components/video/card/VideoCard';
-import axios from "axios";
-import { notFound } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import VideoGrid from '../../components/video/grid/VideoGrid';
+import VideoFilter from "@/components/video/filter/VideoFilter";
 
 
-export default async function Home(){
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    let videos = [];
-    const fetchVideos = async () => {
-        const response = await axios.get(`${baseUrl}/api/videos/index`);
-        videos = response.data;
-    };
-    await fetchVideos().catch((err) => notFound());
-    
-    return(
-        <main>
-            <section id="home-left">
-            Navigation
-            </section>
-            <section id="home-right">
-            <ol>
-                {Object.entries(videos).map(([num, video]) => (
-                    <VideoCard key={num} video={video} />
-                ))}
-            </ol>
-            </section>
-        </main>
-    )
+export default function Home(){
+  const [difficulty, setDifficulty] = useState([]);
+  const [duration, setDuration] = useState([]);
+  const filter = {
+    difficulty,
+    setDifficulty,
+    duration,
+    setDuration
+  }
+
+  return(
+    <main>
+      <section id="home-left">
+        <VideoFilter filter={filter} />
+      </section>
+      <section id="home-right">
+        <VideoGrid filter={filter} />
+      </section>
+    </main>
+  )
 }
