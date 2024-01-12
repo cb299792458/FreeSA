@@ -1,6 +1,7 @@
 "use client"
 import axios from "axios";
 import { useState } from "react";
+import "./upload.scss";
 
 export default function Upload(){
     const blank = {
@@ -15,6 +16,8 @@ export default function Upload(){
 
     const [videoData, setVideoData] = useState(blank);
     const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,21 +32,24 @@ export default function Upload(){
     const addVideo = async () => {
         if (!videoData.title ||!videoData.num || !videoData.ytUrl) return;
         if (!['easy', 'medium', 'hard'].includes(videoData.difficulty)) return;
+        setLoading(true);
         try {
-            const res = await axios.post('/api/videos/', videoData);
+            const res = await axios.post(baseUrl+'/api/videos/', videoData);
             if (res?.data?.ok) {
                 setVideoData(blank);
                 setSuccess(true);
             } else {
                 console.error('Failed to add video.');
             }
+            setLoading(false);
         } catch (error) {
             console.error(error);
+            setLoading(false);
         }
     };
 
     return (
-        <div>
+        <div id="upload">
             <h1>{success ? 'Video Added! Add another?' : 'Add Video'}</h1>
             <form>
                 <label>
@@ -82,7 +88,7 @@ export default function Upload(){
                 </label>
                 <br />
                 <button type="button" onClick={addVideo}>
-                    Add Video
+                    {loading ? 'Adding...' : 'Add Video'}
                 </button>
             </form>
         </div>
