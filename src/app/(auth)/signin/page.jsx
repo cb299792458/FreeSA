@@ -30,7 +30,7 @@ export default function SignIn(){
                 // handle sign in and redirect here
 
             } else {
-                throw new Error('Error in Registration');
+                throw new Error('Error in Authentication');
             }
         } catch (error) {
             console.error(error);
