@@ -10,8 +10,9 @@ const youtube = google.youtube({
 
 export async function GET() {
     try {
-        const db = await connectToDatabase();
-        const collection = await db.collection('videos');
+        const {client} = await connectToDatabase();
+        const db = client.db('freesa-db');
+        const collection = db.collection('videos');
     
         const videos = await collection.find({}).toArray();
     
@@ -28,6 +29,7 @@ export async function GET() {
         return Response.json(videos);
 
     } catch (error) {
+        console.log(error)
         return Response.json({error});
     }
 };

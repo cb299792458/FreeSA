@@ -11,8 +11,9 @@ const youtube = google.youtube({
 export async function GET(request, {params}) {
     try {
         const {id} = params;
-        const db = await connectToDatabase();
-        const collection = await db.collection('videos');
+        const {client} = await connectToDatabase();
+        const db = client.db('freesa-db');
+        const collection = db.collection('videos');
     
         const video = await collection.findOne({num: parseInt(id)});
     
