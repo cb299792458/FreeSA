@@ -1,20 +1,27 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
+const uri = process.env.MONGODB_URI;
 let client;
-let db;
 
-async function connectToDatabase() {
-    if (!client) {
-        client = new MongoClient(process.env.MONGODB_URL, {
-            // useNewUrlParser: true,
-            // useUnifiedTopology: true,
-        });
+if (!uri) throw new Error('Please add your Mongo URI to .env.local');
 
-        await client.connect();
-        db = client.db('test');
+export async function connectToDatabase() {
+    try {
+        if (client) {
+            return { client };
+        }
+
+        client = await (new MongoClient(uri, {serverApi: 
+            {
+                version: ServerApiVersion.v1,
+                strict: true,
+                deprecationErrors: true,
+            }})
+        ).connect();
+        console.log('Connected to MongoDB');
+        return { client };
+    } catch (err) {
+        console.error(err);
     }
-
-    return db;
 }
 
-export { connectToDatabase };
