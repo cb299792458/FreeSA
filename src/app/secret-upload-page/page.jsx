@@ -34,7 +34,10 @@ export default function Upload(){
         if (!['easy', 'medium', 'hard'].includes(videoData.difficulty)) return;
         setLoading(true);
         try {
-            const res = await axios.post(baseUrl+'/api/videos/', videoData);
+            const headers = {
+                'Access-Control-Allow-Origin': '*'
+            }
+            const res = await axios.post(baseUrl+'/api/videos/', videoData, {headers});
             if (res?.data?.ok) {
                 setVideoData(blank);
                 setSuccess(true);

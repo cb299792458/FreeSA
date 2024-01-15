@@ -2,10 +2,6 @@ import { connectToDatabase } from '../../../../utils/mongodb';
 
 export async function POST(req) {
     try {
-        req.setHeader('Access-Control-Allow-Origin', '*');
-        req.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-        req.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
         const data = await req.json();
         const video = {...data, num: parseInt(data.num)};
         
