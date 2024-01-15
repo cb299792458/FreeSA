@@ -28,16 +28,16 @@ export default function Upload(){
                 : value,
         }));
     };
+    const handleDifficultyChange = (e) => {
+        setVideoData((prevData) => ({...prevData, difficulty: e.target.value}));
+    };
 
     const addVideo = async () => {
         if (!videoData.title ||!videoData.num || !videoData.ytUrl) return;
         if (!['easy', 'medium', 'hard'].includes(videoData.difficulty)) return;
         setLoading(true);
         try {
-            const headers = {
-                'Access-Control-Allow-Origin': '*'
-            }
-            const res = await axios.post(baseUrl+'/api/videos/', videoData, {headers});
+            const res = await axios.post(baseUrl+'/api/videos/', videoData);
             if (res?.data?.ok) {
                 setVideoData(blank);
                 setSuccess(true);
@@ -66,9 +66,37 @@ export default function Upload(){
                 </label>
                 <br />
                 <label>
-                    Difficulty:
-                    <input type="text" name="difficulty" value={videoData.difficulty} onChange={handleChange} />
-                </label>
+        <input
+          type="radio"
+          name="difficulty"
+          value="easy"
+          checked={videoData.difficulty === 'easy'}
+          onChange={handleDifficultyChange}
+        />
+        Easy
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          name="difficulty"
+          value="medium"
+          checked={videoData.difficulty === 'medium'}
+          onChange={handleDifficultyChange}
+        />
+        Medium
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          name="difficulty"
+          value="hard"
+          checked={videoData.difficulty === 'hard'}
+          onChange={handleDifficultyChange}
+        />
+        Hard
+      </label>
                 <br />
                 <label>
                     LC URL:
