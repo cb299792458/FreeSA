@@ -15,7 +15,7 @@ export default function VideoGrid({filter, limit}){
   
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${baseUrl}/api/videos/index`)
+            const response = await axios.get(`/api/videos/index`)
             setFetchedVideos(response.data);
         }
         fetchData();

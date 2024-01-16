@@ -5,14 +5,13 @@ import axios from 'axios';
 
 export default async function VideoShow({ params }){
     const { videoId } = params;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     var video;
     var relatedVideos;
         
     const fetchData = async () => {
-        const response = await axios.get(`${baseUrl}/api/videos/${videoId}`);
-        const response2 = await axios.get(`${baseUrl}/api/videos/index`);
+        const response = await axios.get(`/api/videos/${videoId}`);
+        const response2 = await axios.get(`/api/videos/index`);
         video = response.data;
         relatedVideos = response2.data.sort((a, b) => a.num - b.num);
     };
