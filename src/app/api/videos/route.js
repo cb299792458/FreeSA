@@ -18,13 +18,3 @@ export async function POST(req) {
         return Response.json({error})
     }
 }
-
-export async function PATCH(req) {
-    console.log('do it on mongo.db');
-    return Response.json({});
-}
-
-export async function DELETE(req) {
-    console.log('do it on mongo.db');
-    return Response.json({});
-}
