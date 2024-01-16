@@ -18,10 +18,10 @@ export async function GET() {
     
         const response = await youtube.videos.list({
             id: videos.map(video => video.ytUrl.split("/").at(-1)).toString(), // Comma Separated YtIds
-            part: ['snippet', 'contentDetails'], //Basic Resource Info
+            part: ['snippet', 'contentDetails'], // Basic Resource Info
         })
     
-        videos.forEach((video, idx) => {
+        videos.forEach((video, idx) => { // need error handling for invalid yt urls in mongo
             video.thumbnailUrl = response.data.items[idx].snippet.thumbnails.medium.url;
             video.duration = td.parse(response.data.items[idx].contentDetails.duration);
         });

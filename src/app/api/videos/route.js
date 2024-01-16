@@ -7,7 +7,6 @@ export async function POST(req) {
         
         const {client} = await connectToDatabase();
         const db = client.db('freesa-db');
-        // const db = await connectToDatabase();
         
         const collection = db.collection('videos');
 
