@@ -2,10 +2,8 @@
 import axios from "axios";
 import { useState } from "react";
 import "./upload.scss";
-import {headers} from 'next/headers'
 
 export default function Upload(){
-    const headersList = headers();
     const blank = {
         num: '',
         title: '',
