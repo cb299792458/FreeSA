@@ -17,7 +17,7 @@ export default function Upload(){
     const [videoData, setVideoData] = useState(blank);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const baseUrl = process.env._BASE_URL;
     
     const handleChange = (e) => {
         const { name, value } = e.target;
