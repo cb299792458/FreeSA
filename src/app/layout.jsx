@@ -3,8 +3,8 @@ import Link from 'next/link';
 import SideBar from '@/components/sidebar/SideBar';
 import Hamburger from '@/components/sidebar/Hamburger';
 import logo from '../../public/Logo_Small.png';
-import './globals.scss'
-import './header.scss'
+import '/src/styles/globals.scss';
+import '/src/styles/header.scss';
 import Image from 'next/image';
 
 const inter = Inter({ subsets: ['latin'] })

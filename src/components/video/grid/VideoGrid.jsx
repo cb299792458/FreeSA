@@ -5,11 +5,13 @@ import axios from 'axios';
 import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function VideoGrid({filter}){
+export default function VideoGrid({filter, limit}){
     const [fetchedVideos, setFetchedVideos] = useState([]);
     const [videos, setVideos] = useState([]);
     const {difficulty, duration} = filter;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+    limit ||= Infinity;
   
     useEffect(() => {
         const fetchData = async () => {
@@ -40,10 +42,10 @@ export default function VideoGrid({filter}){
             }))
         }
     }, [filter, fetchedVideos])
-  
+
     return(
         <ol className="video-grid">
-            {videos.map(([num, video]) => {
+            {videos.slice(0, limit).map(([num, video]) => {
                 return (<VideoCard key={video._id} video={video} />)
             })}
         </ol>
