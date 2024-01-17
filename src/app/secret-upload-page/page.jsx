@@ -2,8 +2,10 @@
 import axios from "axios";
 import { useState } from "react";
 import "./upload.scss";
+import { unstable_noStore as noStore } from 'next/cache';
 
 export default function Upload(){
+    noStore();
     const blank = {
         num: '',
         title: '',
