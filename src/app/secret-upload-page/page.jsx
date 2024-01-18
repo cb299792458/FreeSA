@@ -17,7 +17,6 @@ export default function Upload(){
     const [videoData, setVideoData] = useState(blank);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,7 +36,7 @@ export default function Upload(){
         if (!['easy', 'medium', 'hard'].includes(videoData.difficulty)) return;
         setLoading(true);
         try {
-            const res = await axios.post(baseUrl+'/api/videos/', videoData);
+            const res = await axios.post('/api/videos/post/', videoData);
             if (res?.data?.ok) {
                 setVideoData(blank);
                 setSuccess(true);
