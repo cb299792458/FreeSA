@@ -1,12 +1,20 @@
+@import '/src/styles/colors.scss';
+
 .video-grid{
     display: grid;
     grid-template-columns: 4fr 4fr 4fr;
-    gap: 2vw;
+    gap: 1vw;
 }
 .video-grid-item{
+    cursor: pointer;
     list-style: none;
-    margin-bottom: 25px;
     padding: 20px;
-    background-color: grey;
-    border-radius: 20px;
+    background-color: $background-light;
+    border-radius: 10px;
+    transition: 0.2s;
+
+    &:hover{
+        background-color: $background-accent;
+        border-radius: 2px;
+    }
 }

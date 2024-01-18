@@ -1,9 +1,11 @@
+@import './colors.scss';
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1vh 3vw;
-  background-color: rgb(42, 45, 49);
+  background-color: $background-accent;
   border-bottom: 2px solid black;
   box-sizing: border-box;
 }
@@ -12,7 +14,7 @@ header {
 #logo-container{
   cursor: pointer;
   position: relative;
-  color: red;
+  color: $text-emphasis;
   font-size: 30px;
   display: flex;
   align-items: center;

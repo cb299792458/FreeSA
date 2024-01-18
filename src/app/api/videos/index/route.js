@@ -3,7 +3,7 @@ import { connectToDatabase } from '../../../../../utils/mongodb';
 const { google } = require('googleapis');
 const td = require('tinyduration');
 
-const youtube = google.youtube({
+const youtube = await google.youtube({
     version: 'v3',
     auth: process.env.YOUTUBE_API_KEY
 });

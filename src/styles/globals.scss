@@ -4,11 +4,7 @@
   I am using Sass variables for ease of use.
 */
 
-$text-primary: rgb(219, 219, 219);
-$text-secondary: rgb(163, 161, 161);
-$text-success: rgb(70, 150, 70);
-$text-emphasis: rgb(223, 0, 0);
-$text-visited: rgb(158, 0, 0);
+@import './colors.scss';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -50,7 +46,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 main{
-  background-color: rgb(32, 34, 40);
+  background-color: $background-primary;
   padding: 10px 20px;
   height: 100%;
   width: 100%;
