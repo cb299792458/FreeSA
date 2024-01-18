@@ -5,7 +5,7 @@ const td = require('tinyduration');
 
 const youtube = google.youtube({
     version: 'v3',
-    auth: process.env.YOUTUBE_API_KEY
+    auth: process.env.YOUTUBE_API_KEY,
 });
 
 export async function GET(request, {params}) {
@@ -21,7 +21,8 @@ export async function GET(request, {params}) {
             id: video.ytUrl.split("/").at(-1), // YouTube Resource Id
             part: ['snippet', 'contentDetails'], // Basic Resource Info
         });
-    
+        
+         // need error handling for invalid yt urls in mongo
         video.thumbnailUrl = youTubeResource.data.items[0].snippet.thumbnails.medium.url;
         video.duration = td.parse(youTubeResource.data.items[0].contentDetails.duration);
     
