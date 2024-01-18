@@ -24,4 +24,3 @@ export async function connectToDatabase() {
         console.error(err);
     }
 }
-
