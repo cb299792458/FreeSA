@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../../../utils/mongodb';
+import { connectToDatabase } from '../../../../../utils/mongodb';
 
 export async function POST(req) {
     try {
@@ -7,7 +7,6 @@ export async function POST(req) {
         
         const {client} = await connectToDatabase();
         const db = client.db('freesa-db');
-        // const db = await connectToDatabase();
         
         const collection = db.collection('videos');
 
@@ -18,14 +17,4 @@ export async function POST(req) {
         console.error(error);
         return Response.json({error})
     }
-}
-
-export async function PATCH(req) {
-    console.log('do it on mongo.db');
-    return Response.json({});
-}
-
-export async function DELETE(req) {
-    console.log('do it on mongo.db');
-    return Response.json({});
 }
