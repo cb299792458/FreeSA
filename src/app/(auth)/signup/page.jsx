@@ -10,12 +10,11 @@ export default function SignUp(){
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const res = await axios.post(baseUrl+'/api/auth/signup/', {
+            const res = await axios.post('/api/auth/signup/', {
                 email,
                 displayName,
                 password,
