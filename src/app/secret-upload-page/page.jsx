@@ -2,10 +2,8 @@
 import axios from "axios";
 import { useState } from "react";
 import "./upload.scss";
-import { unstable_noStore as noStore } from 'next/cache';
 
 export default function Upload(){
-    noStore();
     const blank = {
         num: '',
         title: '',
@@ -38,7 +36,7 @@ export default function Upload(){
         if (!['easy', 'medium', 'hard'].includes(videoData.difficulty)) return;
         setLoading(true);
         try {
-            const res = await axios.post('/api/videos/', videoData);
+            const res = await axios.post('/api/videos/post/', videoData);
             if (res?.data?.ok) {
                 setVideoData(blank);
                 setSuccess(true);

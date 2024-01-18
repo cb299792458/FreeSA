@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../../../utils/mongodb';
+import { connectToDatabase } from '../../../../../utils/mongodb';
 
 export async function POST(req) {
     try {
