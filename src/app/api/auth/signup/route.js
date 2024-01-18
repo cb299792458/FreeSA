@@ -6,7 +6,8 @@ export async function POST(req) {
     const {email, displayName, password} = await req.json();
 
     try {
-        const db = await connectToDatabase();
+        const {client} = await connectToDatabase();
+        const db = client.db('freesa-db');
         const collection = db.collection('users');
 
         const existingUser = await collection.findOne({email});
