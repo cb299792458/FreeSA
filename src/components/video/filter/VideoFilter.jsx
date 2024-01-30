@@ -35,7 +35,7 @@ export default function VideoFilter({filter}){
     return(
         <div className="video-filter">
             <h3>Filter</h3>
-            <details>
+            <details open>
                 <summary>
                     <label htmlFor="duration-filter">By Tag</label>
                 </summary>
@@ -58,7 +58,7 @@ export default function VideoFilter({filter}){
                     </label>
                 </div>
             </details>
-            <details>
+            <details open>
                 <summary><label htmlFor="difficulty-filter"> By Difficulty</label></summary>
                 <div id="difficulty-filter" className="filter difficulty-filter">
                     <label>
