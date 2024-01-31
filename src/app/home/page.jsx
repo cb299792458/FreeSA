@@ -21,7 +21,7 @@ export default function Home(){
                 <VideoFilter filter={filter} />
             </section>
             <section id="home-right">
-                <VideoGrid filter={filter} limit={9} />
+                <VideoGrid filter={filter} />
             </section>
         </main>
     )

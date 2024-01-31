@@ -5,8 +5,9 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1vh 3vw;
+  height: 80px;
   background-color: $background-accent;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $background-accent-light;
   box-sizing: border-box;
 }
 
