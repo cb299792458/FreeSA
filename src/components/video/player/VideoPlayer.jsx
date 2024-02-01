@@ -18,8 +18,8 @@ export default function Video({ video }){
             </iframe>
 
             <div id="video-details">
-                <a href={video.lcUrl}>Try it on LeetCode</a>
-                <p>{difficulty}</p>
+                <a href={video.lcUrl} target="_blank">Try it on LeetCode</a>
+                <p>Difficulty: {difficulty[0].toUpperCase() + difficulty.slice(1)}</p>
             </div>
         </div>
     )

@@ -1,13 +1,22 @@
 #home-left{
     // display: none;
-    width: 30%;
+    width: 10vw;
     // border: 1px solid red;
     padding: 10px 20px;
+    details{
+        width: max-content;
+        margin-bottom: 20px;
+    }
 }
 #home-right{
     width: 100%;
+    max-width: 80vw;
     overflow-y: auto;
     padding: 20px 0;
     // border: 1px solid yellow;
     padding: 20px;
+}
+
+main {
+    justify-content: end;
 }
