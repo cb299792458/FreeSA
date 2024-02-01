@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import VideoPlayer from '@/components/video/player/VideoPlayer';
+import Comments from '@/components/video/comments/Comments';
 import axios from 'axios';
 
 export default async function VideoShow({ params }){
@@ -14,6 +15,7 @@ export default async function VideoShow({ params }){
         const response = await axios.get(`${baseUrl}/api/videos/${videoId}`);
         const response2 = await axios.get(`${baseUrl}/api/videos/index`);
         video = response.data;
+        if(!video._id) throw "No Video";
         relatedVideos = response2.data.sort((a, b) => a.num - b.num);
     };
 
@@ -22,16 +24,9 @@ export default async function VideoShow({ params }){
     return(
         <main>
             <section id="video-left">
+                <h1>{video.num}. {video.title}</h1><br/>
                 <VideoPlayer video={video} />
-
-                <div id="comments-container">
-                    <ul>
-                        <li>These will be comments.</li>
-                        <li>These will be comments.</li>
-                        <li>These will be comments.</li>
-                        <li>These will be comments.</li>
-                    </ul>
-                </div>
+                <Comments video={video} />
             </section>
             <section id="video-right">
 
@@ -44,24 +39,6 @@ export default async function VideoShow({ params }){
                     })}
                     <Link href="./1000">This video doesn&apos;t exist.</Link>
                 </nav>
-                <ol>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                    <li>Suggested Videos</li>
-                </ol>
             </section>
 
             

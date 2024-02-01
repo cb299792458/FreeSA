@@ -2,9 +2,12 @@
     // display: none;
     width: 30%;
     // border: 1px solid red;
+    padding: 10px 20px;
 }
 #home-right{
     width: 100%;
+    overflow-y: auto;
+    padding: 20px 0;
     // border: 1px solid yellow;
     padding: 20px;
 }

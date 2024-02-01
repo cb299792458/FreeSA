@@ -18,7 +18,7 @@ export default function Video({ video }){
             </iframe>
 
             <div id="video-details">
-                <h3>{title}</h3>
+                <a href={video.lcUrl}>Try it on LeetCode</a>
                 <p>{difficulty}</p>
             </div>
         </div>
