@@ -6,6 +6,9 @@ import logo from '../../public/Logo_Small.png';
 import '/src/styles/globals.scss';
 import '/src/styles/header.scss';
 import Image from 'next/image';
+import { getServerSession } from "next-auth";
+import SessionProvider from '@/components/SessionProvider';
+import NavBar from '@/components/Nav';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +17,9 @@ export const metadata = {
     description: 'Watch Data Structures & Algorithms problem solutions',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+    const session = await getServerSession();
+
     return (
         <html lang="en">
             <body className={inter.className}>
@@ -26,7 +31,10 @@ export default function RootLayout({ children }) {
                     </Link>
                     <Hamburger />
                 </header>
-                {children}
+                <SessionProvider session={session}>
+                    <NavBar />
+                    {children}
+                </SessionProvider>
             </body>
         </html>
     )
