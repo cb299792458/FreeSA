@@ -8,7 +8,7 @@ export default function ProgressToggle ({videoId}) {
 
     useEffect(() => {
         const getProgress = async () => {
-            const res = await axios.get('/api/progress/')
+            const res = await axios.get('/api/progress/');
             const data = res.data;
             setProgress(data.progress || {});
         }
