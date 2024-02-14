@@ -3,6 +3,7 @@ import Link from 'next/link';
 import VideoPlayer from '@/components/video/player/VideoPlayer';
 import Comments from '@/components/video/comments/Comments';
 import axios from 'axios';
+import ProgressToggle from '@/components/ProgressToggle';
 
 export default async function VideoShow({ params }){
     const { videoId } = params;
@@ -27,6 +28,7 @@ export default async function VideoShow({ params }){
                 <h1>{video.num}. {video.title}</h1><br/>
                 <VideoPlayer video={video} />
                 <Comments video={video} />
+                <ProgressToggle videoId={videoId}/>
             </section>
             <section id="video-right">
 
