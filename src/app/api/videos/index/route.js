@@ -29,7 +29,7 @@ export async function GET() {
         return Response.json(videos);
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return Response.json({error});
     }
 };
