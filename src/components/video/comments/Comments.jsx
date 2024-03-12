@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import { useEffect, useState } from "react";
-import "./Comments.scss"
+import "./Comments.scss";
 import axios from "axios";
 
 export default function Comments({ video }){
@@ -13,23 +13,22 @@ export default function Comments({ video }){
             setComments(res.data.comments || []);
         }
         getProgress();
-    }, []);
+    }, [num]);
 
 
     return(
-    <div id="comments-container">
-        <ul>
-            {comments.map((comment) => {
-                return(
-                    <li key={comment._id}>
-                        <h3>{comment.displayName}</h3>
-                        <h5>{comment.createdAt}</h5>
-                        <p>{comment.text}</p>
-                        {comment.updatedAt && <h5>(Edited at comment.updatedAt)</h5>}
-                    </li>
-                )
-            })}
-        </ul>
-    </div>
+        <div id="comments-container">
+            <ul>
+                {comments.map((comment) => <Comment key={comment._id} comment={comment}/>)}
+            </ul>
+        </div>
     )
-}
+};
+
+const Comment = ({comment}) => {
+    return <li>
+        <h4>{comment.displayName}</h4>
+        <p>{comment.text}</p>
+        <h6>Posted at {(new Date(comment.createdAt)).toLocaleString()}{comment.updatedAt ? `, Edited at ${(new Date(comment.updatedAt)).toLocaleString()}` : ''}</h6>
+    </li>
+};

@@ -8,7 +8,7 @@ export default function VideoCard({ video, completed }){
 
     return(
         <li className="video-grid-item video-card">
-            <img id="thumbnail" src={thumbnailUrl} />
+            <img id="thumbnail" src={thumbnailUrl} alt={title}/>
             <Link href={`/video/${num}`}>{num +". "+title}</Link>{completed ? '✅' : ''}
             <p>{difficulty} — {duration?.minutes+":"+('00'+duration?.seconds).slice(-2)}</p>
         </li>

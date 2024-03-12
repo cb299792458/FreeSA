@@ -44,6 +44,9 @@
         border-radius: 0 0 5px 5px;
         position: relative;
         top: -1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 

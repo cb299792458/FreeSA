@@ -41,7 +41,7 @@ export default function VideoGrid({filter, limit, progress}){
                 )
             }))
         }
-    }, [filter, fetchedVideos])
+    }, [filter, fetchedVideos, difficulty, duration])
 
     return(
         <ol className="video-grid">

@@ -25,7 +25,7 @@ export default function Home(){
         getProgress();
     }, [])
 
-    return(
+    return (
         <main>
             <section id="home-left">
                 <VideoFilter filter={filter} />

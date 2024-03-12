@@ -3,7 +3,7 @@ import Link from 'next/link';
 import VideoPlayer from '@/components/video/player/VideoPlayer';
 import Comments from '@/components/video/comments/Comments';
 import axios from 'axios';
-import ProgressToggle from '@/components/ProgressToggle';
+// import ProgressToggle from '@/components/ProgressToggle';
 
 export default async function VideoShow({ params }){
     const { videoId } = params;
@@ -28,10 +28,10 @@ export default async function VideoShow({ params }){
                 <h1>{video.num}. {video.title}</h1><br/>
                 <VideoPlayer video={video} />
                 <Comments video={video} />
-                <ProgressToggle videoId={videoId}/>
+                {/* <ProgressToggle videoId={videoId}/> */}
             </section>
-            <section id="video-right">
 
+            <section id="video-right">
                 <h5>Navigation</h5>
                 <Link href="/">Home</Link><br/>
                 <nav style={{display: "flex", flexDirection: "column"}}>
@@ -39,11 +39,8 @@ export default async function VideoShow({ params }){
                     {Object.entries(relatedVideos).map(([id, video]) => {
                         return <Link key={id} href={`./${video.num}`}>{video.num +". "+video.title}</Link>
                     })}
-                    <Link href="./1000">This video doesn&apos;t exist.</Link>
                 </nav>
             </section>
-
-            
         </main>
     )
 }

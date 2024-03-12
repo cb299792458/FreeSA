@@ -28,7 +28,7 @@ export default function ProgressToggle ({videoId}) {
 
     return (
         <div>
-            <button onClick={toggleSolved}>{!!progress[videoId] ? 'You Did It!' : 'Mark as Solved?'}</button>
+            <a onClick={toggleSolved} style={{textDecoration: 'underline', cursor: 'pointer'}}>{!!progress[videoId] ? 'You Did It!' : 'Mark as Solved?'}</a>
             <br/>
             {loggedIn ? '' : 'Sign In to Save Your Progress'}
         </div>

@@ -1,9 +1,9 @@
+import ProgressToggle from "@/components/ProgressToggle";
 import "./VideoPlayer.scss"
 
 
 export default function Video({ video }){
-
-    const {title, difficulty, ytUrl } = video;
+    const { num, difficulty, ytUrl } = video;
     const ytId = ytUrl?.split("/").at(-1);
 
     return(
@@ -14,12 +14,12 @@ export default function Video({ video }){
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowFullScreen
-            >
-            </iframe>
+            />
 
             <div id="video-details">
-                <a href={video.lcUrl}>Try it on LeetCode</a>
-                <p>{difficulty}</p>
+                <a href={video.lcUrl}>Try it on LeetCode?</a>
+                <ProgressToggle videoId={num} />
+                <p>Difficulty: {difficulty.toUpperCase()}</p>
             </div>
         </div>
     )
