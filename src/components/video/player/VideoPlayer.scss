@@ -1,10 +1,10 @@
 @import '/src/styles/colors.scss';
 
 #video-left{
-    // border: 1px solid red;
     box-sizing: border-box;
     width: 100%;
     text-align: left;
+    margin-left: 1vw;
     ul {
         padding: 0;
 
@@ -14,7 +14,7 @@
             margin-bottom: 5px;
             padding: 5px 10px;
             background-color: $background-accent-light;
-            width: 50vw;
+            // width: 50vw;
         }
     }
 }
@@ -25,6 +25,7 @@
     border-radius: 30px;
     background-color: rgba(0, 0, 0, 0.25);
     margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 #video-container{
@@ -44,9 +45,9 @@
         border-radius: 0 0 5px 5px;
         position: relative;
         top: -1px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
-main{
-    padding: 10px 7vw;
-}
