@@ -26,7 +26,7 @@ export default function Home(){
     }, [])
 
     return (
-        <main>
+        <main id="home">
             <section id="home-left">
                 <VideoFilter filter={filter} />
             </section>

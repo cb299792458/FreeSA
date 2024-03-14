@@ -4,3 +4,19 @@
         width: 100%;
     }
 }
+
+#comment-form {
+    display: flex;
+    flex-direction: row;
+    button {
+        border: none;
+        border-radius: 5px;
+        padding: 0px 10px;
+    }
+}
+
+#comment-text {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 5px;
+}
