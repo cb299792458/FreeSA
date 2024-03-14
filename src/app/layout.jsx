@@ -8,7 +8,7 @@ import '/src/styles/header.scss';
 import Image from 'next/image';
 import { getServerSession } from "next-auth";
 import SessionProvider from '@/components/SessionProvider';
-import NavBar from '@/components/Nav';
+import NavBar from '@/components/nav/Nav';
 
 const inter = Inter({ subsets: ['latin'] })
 
