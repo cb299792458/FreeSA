@@ -8,11 +8,14 @@ import axios from "axios";
 export default function Home(){
     const [difficulty, setDifficulty] = useState([]);
     const [duration, setDuration] = useState([]);
+    const [tag, setTag] = useState('');
     const filter = {
         difficulty,
         setDifficulty,
         duration,
-        setDuration
+        setDuration,
+        tag,
+        setTag,
     }
 
     const [progress, setProgress] = useState({});

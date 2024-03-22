@@ -8,8 +8,7 @@ import { useEffect, useState } from 'react';
 export default function VideoGrid({filter, limit, progress}){
     const [fetchedVideos, setFetchedVideos] = useState([]);
     const [videos, setVideos] = useState([]);
-    const {difficulty, duration} = filter;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const {difficulty, duration, tag} = filter;
 
     limit ||= Infinity;
   
@@ -22,30 +21,22 @@ export default function VideoGrid({filter, limit, progress}){
     }, [])
 
     useEffect(() => {
-        const v = Object.entries(fetchedVideos);
-        if(difficulty.length === 0 && duration.length === 0){
-            setVideos(v);
-        } else {
-            setVideos(v.filter(([id, video]) => {
-                return (
-                    
-                    (difficulty.length === 0 ?
-                    true :
-                    difficulty.includes(video.difficulty))
-                    &&
-                    (duration.length === 0 ?
-                    true :
-                    duration.some(key => {
-                        return durationMap[key](video)
-                    }))
-                )
-            }))
-        }
-    }, [filter, fetchedVideos, difficulty, duration])
+        const allVideos = Object.values(fetchedVideos);
+        setVideos(allVideos
+            .filter(v => !difficulty.length || difficulty.includes(v.difficulty))
+            .filter(v => !tag || v.tag === tag)
+            .filter((v) => {
+                return !duration.length || duration.some(key => {
+                    return durationMap[key](v)
+                })
+            })
+        );
+
+    }, [filter, fetchedVideos, difficulty, duration, tag])
 
     return(
         <ol className="video-grid">
-            {videos.slice(0, limit).map(([num, video]) => {
+            {videos.slice(0, limit).map((video) => {
                 return (<VideoCard key={video._id} video={video} completed={!!progress[video.num]}/>)
             })}
         </ol>

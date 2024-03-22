@@ -1,5 +1,4 @@
 import './VideoFilter.scss';
-import { useEffect, useState } from 'react';
 
 export const durationMap = {
     0: (video) => video.duration.minutes <= 5,
@@ -9,17 +8,34 @@ export const durationMap = {
 }
 
 export default function VideoFilter({filter}){
-
-    const {setDifficulty, setDuration} = filter;
-
     
+    const {setDifficulty, setDuration, setTag} = filter;
+    
+    function handleTagChange(e) {
+        setTag(e.target.value);
+    };
+    const TagRadioButton = ({tagName}) => {
+        return <div id="tag-filter" className="filter tag-filter">
+            <label>
+                <input
+                    type="radio"
+                    name="tag"
+                    value={tagName}
+                    onChange={handleTagChange}
+                    checked={filter.tag === tagName}
+                />
+                &nbsp;{tagName}
+            </label>
+        </div>
+    };
+
     function filterDifficulty(target){
         if(filter.difficulty.includes(target)){
         setDifficulty(prev => prev.filter(ele => ele !== target))
         } else {
         setDifficulty(prev => prev.concat([target]));
         }
-    }
+    };
 
     function filterDuration(target){
         // 0 => 5 minutes or less
@@ -31,32 +47,21 @@ export default function VideoFilter({filter}){
         } else {
         setDuration(prev => prev.concat([target]));
         }
-    }
+    };
+
+    const tagNames = ['string', 'array', 'linked list', 'binary tree', 'graph', 'stack', 
+        'binary search', 'recursion', 'dynamic programming', 'heap', 'trie'];
+
     return(
         <div className="video-filter">
             <h3>Filter</h3>
-            <details open>
+            <details closed="true">
                 <summary>
                     <label htmlFor="duration-filter">By Tag</label>
                 </summary>
-                <div id="tag-filter" className="filter tag-filter">
-                    <label>
-                        <input type="checkbox"  onChange={() => (0)} />
-                        &nbsp;Recursion
-                    </label>
-                    <label>
-                        <input type="checkbox"  onChange={() => (1)} />
-                        &nbsp;O(n) Optimized
-                    </label>
-                    <label>
-                        <input type="checkbox"  onChange={() => (2)} />
-                        &nbsp;Binary Trees
-                    </label>
-                    <label> 
-                        <input type="checkbox"  onChange={() => (3)} />
-                        &nbsp;Dynamic Programming
-                    </label>
-                </div>
+                {tagNames.map((tagName) => (
+                    <TagRadioButton handleTagChange={handleTagChange} tagName={tagName} key={tagName}/>
+                ))}
             </details>
             <details open>
                 <summary><label htmlFor="difficulty-filter"> By Difficulty</label></summary>
