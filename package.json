@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.0",
     "axios": "^1.6.5",
     "bcryptjs": "^2.4.3",
     "fs": "^0.0.1-security",
     "googleapis": "^129.0.0",
+    "gsap": "^3.12.5",
     "http-proxy-middleware": "^2.0.6",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.2",
