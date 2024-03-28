@@ -10,6 +10,7 @@ import { useGSAP } from '@gsap/react';
 export default function VideoGrid({filter, limit, progress}){
     gsap.registerPlugin(useGSAP);
     const [fetchedVideos, setFetchedVideos] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [videos, setVideos] = useState([]);
     const {difficulty, duration, tag} = filter;
     
@@ -21,7 +22,7 @@ export default function VideoGrid({filter, limit, progress}){
             const response = await axios.get(`/api/videos/index`)
             setFetchedVideos(response.data);
         }
-        fetchData();
+        fetchData().then(() => setLoading(false));
     }, [])
     
     useEffect(() => {
@@ -56,6 +57,7 @@ export default function VideoGrid({filter, limit, progress}){
         }
     }, [videos])
 
+    if(loading) return <img src="https://media.tenor.com/G7LfW0O5qb8AAAAi/loading-gif.gif" style={{margin: "50px auto", width: "10vw"}}/>;
     return(
         <ol className="video-grid">
             {videos.slice(0, limit).map((video) => {
