@@ -46,12 +46,14 @@ export default function VideoGrid({filter, limit, progress, fetchedVideos, loadi
         }
     }, [videos, fetchedVideos])
 
-    if(loading) return <img src="https://media.tenor.com/G7LfW0O5qb8AAAAi/loading-gif.gif" style={{margin: "50px auto", width: "10vw"}}/>;
-    return(
-        <ol className="video-grid">
-            {videos.slice(0, limit).map((video) => {
-                return (<VideoCard key={video._id} video={video} completed={!!progress[video.num]}/>)
-            })}
-        </ol>
-    )
+    return(<>
+        {loading && <img src="https://media.tenor.com/G7LfW0O5qb8AAAAi/loading-gif.gif" style={{margin: "50px auto", width: "10vw"}}/>}
+        {!loading && 
+            <ol className="video-grid">
+                {videos.slice(0, limit).map((video) => {
+                    return (<VideoCard key={video._id} video={video} completed={!!progress[video.num]}/>)
+                })}
+            </ol>
+        }
+    </>)
 }
