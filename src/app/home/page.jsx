@@ -8,7 +8,8 @@ import axios from "axios";
 export default function Home(){
     const [difficulty, setDifficulty] = useState([]);
     const [duration, setDuration] = useState([]);
-    const [tag, setTag] = useState('');
+    const [tag, setTag] = useState('all');
+    const [tagNames, setTagNames] = useState([]);
     const filter = {
         difficulty,
         setDifficulty,
@@ -16,16 +17,25 @@ export default function Home(){
         setDuration,
         tag,
         setTag,
+        tagNames,
+        setTagNames
     }
 
     const [progress, setProgress] = useState({});
+    const [fetchedVideos, setFetchedVideos] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        const getProgress = async () => {
+
+        const fetchData = async () => {
+            const response = await axios.get(`/api/videos/index`)
+            setFetchedVideos(response.data.videos);
+            setTagNames(response.data.tagNames);
             const res = await axios.get('/api/progress/')
             const data = res.data;
             setProgress(data.progress || {});
         }
-        getProgress();
+        
+        fetchData().then(() => setLoading(false));
     }, [])
 
     return (
@@ -34,7 +44,7 @@ export default function Home(){
                 <VideoFilter filter={filter} />
             </section>
             <section id="home-right">
-                <VideoGrid filter={filter} progress={progress}/>
+                <VideoGrid filter={filter} progress={progress} fetchedVideos={fetchedVideos} loading={loading}/>
             </section>
         </main>
     )

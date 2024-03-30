@@ -9,7 +9,7 @@ export const durationMap = {
 
 export default function VideoFilter({filter}){
     
-    const {setDifficulty, setDuration, setTag} = filter;
+    const {setDifficulty, setDuration, setTag, tagNames} = filter;
     
     function handleTagChange(e) {
         setTag(e.target.value);
@@ -49,22 +49,17 @@ export default function VideoFilter({filter}){
         }
     };
 
-    const tagNames = ['string', 'array', 'linked list', 'binary tree', 'graph', 'stack', 
-        'binary search', 'recursion', 'dynamic programming', 'heap', 'trie'];
-
     return(
         <div className="video-filter">
             <h3>Filter</h3>
             <details closed="true">
-                <summary>
-                    <label htmlFor="duration-filter">By Tag</label>
-                </summary>
-                {tagNames.map((tagName) => (
+                <summary>By Tag</summary>
+                {['all'].concat(tagNames).map((tagName) => (
                     <TagRadioButton handleTagChange={handleTagChange} tagName={tagName} key={tagName}/>
                 ))}
             </details>
-            <details open>
-                <summary><label htmlFor="difficulty-filter"> By Difficulty</label></summary>
+            <details>
+                <summary>By Difficulty</summary>
                 <div id="difficulty-filter" className="filter difficulty-filter">
                     <label>
                         <input id="easy-select" type="checkbox"  onChange={() => filterDifficulty('easy')} />
@@ -82,9 +77,7 @@ export default function VideoFilter({filter}){
             </details>
 
             <details>
-                <summary>
-                    <label htmlFor="duration-filter">By Duration</label>
-                </summary>
+                <summary>By Duration</summary>
                 <div id="duration-filter" className="filter duration-filter">
                     <label>
                         <input type="checkbox"  onChange={() => filterDuration(0)} />

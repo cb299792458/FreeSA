@@ -1,16 +1,13 @@
 import './VideoGrid.scss';
 import VideoCard from '../card/VideoCard';
 import { durationMap } from '../filter/VideoFilter';
-import axios from 'axios';
-import { notFound } from 'next/navigation';
+
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react'; 
 
-export default function VideoGrid({filter, limit, progress}){
+export default function VideoGrid({filter, limit, progress, fetchedVideos, loading}){
     gsap.registerPlugin(useGSAP);
-    const [fetchedVideos, setFetchedVideos] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [videos, setVideos] = useState([]);
     const {difficulty, duration, tag} = filter;
     
@@ -18,18 +15,10 @@ export default function VideoGrid({filter, limit, progress}){
     limit ||= Infinity;
     
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get(`/api/videos/index`)
-            setFetchedVideos(response.data);
-        }
-        fetchData().then(() => setLoading(false));
-    }, [])
-    
-    useEffect(() => {
         const allVideos = Object.values(fetchedVideos);
         setVideos(allVideos
             .filter(v => !difficulty.length || difficulty.includes(v.difficulty))
-            .filter(v => !tag || v.tag === tag)
+            .filter(v => tag === 'all' || v.tag === tag)
             .filter((v) => {
                 return !duration.length || duration.some(key => {
                     return durationMap[key](v)
@@ -37,25 +26,25 @@ export default function VideoGrid({filter, limit, progress}){
             })
             );        
             
-    }, [filter, fetchedVideos, difficulty, duration, tag])
+    }, [fetchedVideos, difficulty, duration, tag])
         
     useGSAP(() => {
-
         if(videos.length){
             let tl = gsap.timeline({});
             tl.set(".video-grid-item", {
                 y: 0,
-                opacity: 0
+                opacity: 0,
+                overwrite: true
             })
             .to(".video-grid-item", {
                 y: 100,
                 opacity: 1,
-                duration: 0.1,
+                duration: 0.2,
                 stagger: 0.1,
-                delay: 0.25
+                delay: 0.2
             });
         }
-    }, [videos])
+    }, [videos, fetchedVideos])
 
     if(loading) return <img src="https://media.tenor.com/G7LfW0O5qb8AAAAi/loading-gif.gif" style={{margin: "50px auto", width: "10vw"}}/>;
     return(

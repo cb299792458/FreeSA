@@ -19,11 +19,6 @@ function AuthButton () {
 export default function NavBar () {
     return (
         <div id="nav-bar">
-            <h2>{'Created By: '}
-                <a href="https://www.linkedin.com/in/brian-lam-software-developer/">Brian Lam</a>
-                {' and '}
-                <a href="https://www.linkedin.com/in/clarence-smith-nyc/">Clarence Smith</a>
-            </h2>
             <AuthButton />
         </div>
     )
