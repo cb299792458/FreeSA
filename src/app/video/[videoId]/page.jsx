@@ -17,7 +17,7 @@ export default async function VideoShow({ params }){
         const response2 = await axios.get(`${baseUrl}/api/videos/index`);
         video = response.data;
         if(!video._id) throw "No Video";
-        relatedVideos = response2.data.sort((a, b) => a.num - b.num);
+        relatedVideos = response2.data.videos.sort((a, b) => a.num - b.num);
     };
 
     await fetchData().catch((err) => notFound());

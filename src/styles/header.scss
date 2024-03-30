@@ -5,29 +5,35 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1vh 3vw;
-  height: 80px;
+  height: 90px;
   background-color: $background-accent;
   box-sizing: border-box;
 }
 
-
-#logo-container{
-  cursor: pointer;
-  position: relative;
-  color: $text-emphasis;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  user-select: none;
-  text-decoration: none;
-  #logo{
-    width: 50px;
-    height: 50px;
-    position: relative;
-    left: 8px;
-    bottom: 3px;
+#us{
+  color: white;
+  vertical-align: top;
+  line-height: 1em;
+  a{
+      color: orange;
+      text-decoration: none;
+      &:hover{
+          text-decoration: underline;
+      }
   }
+  font-size: 12px;
+  padding-bottom: 1px;
 }
+
+
+#logo{
+  object-fit: contain;
+  object-position: left bottom;
+  // border: 1px solid red;
+  box-sizing: border-box;
+  height: 75px;
+}
+
 
 #hamburger-container{
   width: 32px;

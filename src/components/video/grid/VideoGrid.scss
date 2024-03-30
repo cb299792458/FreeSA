@@ -3,7 +3,7 @@
 .video-grid{
     display: grid;
     grid-template-columns: 4fr 4fr 4fr;
-    gap: 1vw;
+    gap: 1.5vw;
 }
 .video-grid-item{
     cursor: pointer;
@@ -14,10 +14,16 @@
     padding: 20px;
     background-color: $background-light;
     border-radius: 10px;
-    transition: 0.2s;
-
+    transition: border-radius 0.2s, background-color 0.2s;
     &:hover{
         background-color: $background-accent-light;
         border-radius: 2px;
+    }
+}
+
+a:has(.video-grid-item){
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
     }
 }

@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link';
 import SideBar from '@/components/sidebar/SideBar';
 import Hamburger from '@/components/sidebar/Hamburger';
-import logo from '../../public/Logo_Small.png';
+import logo from '../../public/FreeSA-sm.png';
 import '/src/styles/globals.scss';
 import '/src/styles/header.scss';
 import Image from 'next/image';
@@ -23,16 +23,20 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <header className="header">
-                    <SideBar />
-                    <Link id="logo-container" href="/">
-                        <Image id="logo" width={100} height={100} src={logo} alt=''/>
-                        FreeSA
-                    </Link>
-                    <Hamburger />
-                </header>
                 <SessionProvider session={session}>
-                    <NavBar />
+                    <header className="header">
+                        <div id="logo-container">
+                            <Link id="logo-link" href="/">
+                                <Image id="logo" src={logo} alt=''/>
+                            </Link>
+                            <p id="us">{'Created By: '}
+                                <a href="https://www.linkedin.com/in/brian-lam-software-developer/">Brian Lam</a> 
+                                {' and '} 
+                                <a href="https://www.linkedin.com/in/clarence-smith-nyc/">Clarence Smith</a>
+                            </p>
+                        </div>
+                            <NavBar />
+                    </header>
                     {children}
                 </SessionProvider>
             </body>
