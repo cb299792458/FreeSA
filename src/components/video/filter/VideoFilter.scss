@@ -37,3 +37,15 @@ details[open]{
         margin-bottom: 10px;
     }
 }
+
+button[name=sort]{
+    background-color: #00000000;
+    border: none;
+    margin-left: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 8px;
+    &:hover{
+        background-color: #0000002f;
+    }
+}

@@ -9,7 +9,7 @@ export const durationMap = {
 
 export default function VideoFilter({filter}){
     
-    const {setDifficulty, setDuration, setTag, tagNames} = filter;
+    const {setDifficulty, setDuration, setTag, tagNames, sortVal, setSortVal, sortDir, setSortDir} = filter;
     
     function handleTagChange(e) {
         setTag(e.target.value);
@@ -97,6 +97,26 @@ export default function VideoFilter({filter}){
                     </label>
                 </div>
             </details>
+            <h3>Sort 
+                <button name="sort" onClick={() => {setSortDir(sortDir === "asc" ? "desc" : "asc")}}>
+                    {sortDir === "asc" ? <i className="fa-solid fa-arrow-up-short-wide"></i> : <i className="fa-solid fa-arrow-down-wide-short"></i>}
+                </button>
+            </h3>
+            <div>
+                <label>
+                    <input type="radio" name="sort" value="number" onChange={() => setSortVal("number")} checked={sortVal === "number"}/>
+                &nbsp; Problem Number</label>
+            </div>
+            <div >
+                <label>
+                    <input type="radio" name="sort" value="duration" onChange={() => setSortVal("duration")} checked={sortVal === "duration"}/>
+                &nbsp; Duration</label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="sort" value="difficulty" onChange={() => setSortVal("difficulty")} checked={sortVal === "difficulty"}/>
+                &nbsp; Difficulty</label>
+            </div>
         </div>
     )
 }

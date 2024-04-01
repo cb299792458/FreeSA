@@ -22,6 +22,9 @@ export default async function RootLayout({ children }) {
 
     return (
         <html lang="en">
+            <head>
+                <script src="https://kit.fontawesome.com/a65848e44c.js" crossorigin="anonymous" />
+            </head>
             <body className={inter.className}>
                 <SessionProvider session={session}>
                     <header className="header">
