@@ -16,6 +16,8 @@ export default function VideoGrid({filter, limit, progress, fetchedVideos, loadi
     
     useEffect(() => {
         const allVideos = Object.values(fetchedVideos);
+
+
         setVideos(_ => {
             const result = allVideos
             .filter(v => !difficulty.length || difficulty.includes(v.difficulty))
@@ -53,7 +55,8 @@ export default function VideoGrid({filter, limit, progress, fetchedVideos, loadi
                 opacity: 1,
                 duration: 0.2,
                 stagger: 0.1,
-                delay: 0.2
+                delay: 0.2,
+                overwrite: true
             });
         }
     }, [videos, fetchedVideos])
