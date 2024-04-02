@@ -10,6 +10,8 @@ export default function Home(){
     const [duration, setDuration] = useState([]);
     const [tag, setTag] = useState('all');
     const [tagNames, setTagNames] = useState([]);
+    const [sortVal, setSortVal] = useState("number");
+    const [sortDir, setSortDir] = useState("asc");
     const filter = {
         difficulty,
         setDifficulty,
@@ -18,7 +20,11 @@ export default function Home(){
         tag,
         setTag,
         tagNames,
-        setTagNames
+        setTagNames,
+        sortVal,
+        setSortVal,
+        sortDir,
+        setSortDir
     }
 
     const [progress, setProgress] = useState({});

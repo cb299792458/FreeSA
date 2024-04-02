@@ -1,7 +1,5 @@
 import { Inter } from 'next/font/google'
 import Link from 'next/link';
-import SideBar from '@/components/sidebar/SideBar';
-import Hamburger from '@/components/sidebar/Hamburger';
 import logo from '../../public/FreeSA-sm.png';
 import '/src/styles/globals.scss';
 import '/src/styles/header.scss';
