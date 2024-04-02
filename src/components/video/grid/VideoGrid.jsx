@@ -16,7 +16,6 @@ export default function VideoGrid({filter, limit, progress, fetchedVideos, loadi
     
     useEffect(() => {
         const allVideos = Object.values(fetchedVideos);
-        debugger;
         setVideos(_ => {
             const result = allVideos
             .filter(v => !difficulty.length || difficulty.includes(v.difficulty))
