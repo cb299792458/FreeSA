@@ -10,35 +10,32 @@ export default function VideoGrid({filter, limit, progress, fetchedVideos, loadi
     gsap.registerPlugin(useGSAP);
     const [videos, setVideos] = useState([]);
     const {difficulty, duration, tag, sortVal, sortDir} = filter;
-    
-    
+        
     limit ||= Infinity;
     
     useEffect(() => {
         const allVideos = Object.values(fetchedVideos);
-
-
-        setVideos(_ => {
-            const result = allVideos
-            .filter(v => !difficulty.length || difficulty.includes(v.difficulty))
-            .filter(v => tag === 'all' || v.tag === tag)
-            .filter((v) => {
-                return !duration.length || duration.some(key => {
-                    return durationMap[key](v)
-                })
-            }).sort((a, b) => {
-                if(sortVal === "number"){
-                    return a.num - b.num
-                } else if(sortVal === "difficulty"){
-                    const diffs = {easy: 0, medium: 1, hard: 2};
-                    return diffs[a.difficulty] - diffs[b.difficulty];
-                } else if (sortVal === "duration"){
-                    return (a.duration.minutes*60 + a.duration.seconds) - b.duration.minutes*60 + b.duration.seconds
-                }
+        const result = allVideos
+        .filter(v => !difficulty.length || difficulty.includes(v.difficulty))
+        .filter(v => tag === 'all' || v.tag === tag)
+        .filter((v) => {
+            return !duration.length || duration.some(key => {
+                return durationMap[key](v)
             })
+        })
+        
+        result.sort((a, b) => {
+            if(sortVal === "number"){
+                return a.num - b.num
+            } else if(sortVal === "difficulty"){
+                const diffs = {easy: 0, medium: 1, hard: 2};
+                return diffs[a.difficulty] - diffs[b.difficulty];
+            } else if (sortVal === "duration"){
+                return (a.duration.minutes*60 + a.duration.seconds) - b.duration.minutes*60 + b.duration.seconds
+            }
+        })
 
-            return sortDir === "asc" ? result : result.reverse();
-        });
+        setVideos(sortDir === "asc" ? result : result.reverse());
             
     }, [fetchedVideos, difficulty, duration, tag, sortVal, sortDir])
         
@@ -56,10 +53,10 @@ export default function VideoGrid({filter, limit, progress, fetchedVideos, loadi
                 duration: 0.2,
                 stagger: 0.1,
                 delay: 0.2,
-                overwrite: true
+                overwrite: true,
             });
         }
-    }, [videos, fetchedVideos])
+    }, [videos, loading])
 
     return(<>
         {loading && <img src="https://media.tenor.com/G7LfW0O5qb8AAAAi/loading-gif.gif" style={{margin: "50px auto", width: "10vw"}}/>}
