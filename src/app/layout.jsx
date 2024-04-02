@@ -1,7 +1,5 @@
 import { Inter } from 'next/font/google'
 import Link from 'next/link';
-import SideBar from '@/components/sidebar/SideBar';
-import Hamburger from '@/components/sidebar/Hamburger';
 import logo from '../../public/FreeSA-sm.png';
 import '/src/styles/globals.scss';
 import '/src/styles/header.scss';
@@ -22,9 +20,6 @@ export default async function RootLayout({ children }) {
 
     return (
         <html lang="en">
-            <head>
-                <script src="https://kit.fontawesome.com/a65848e44c.js" crossorigin="anonymous" />
-            </head>
             <body className={inter.className}>
                 <SessionProvider session={session}>
                     <header className="header">
