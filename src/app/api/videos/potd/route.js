@@ -17,7 +17,6 @@ export async function GET(request, {params}) {
     
         // const video = await collection.findOne({num: parseInt(id)});
 
-        console.assert(false, "Beginning YOUTUBE REQUEST");
         const youTubeResource = await youtube.search.list({
             part: "snippet",
             type: "video",
@@ -30,7 +29,6 @@ export async function GET(request, {params}) {
          // need error handling for invalid yt urls in mongo
         // video.thumbnailUrl = youTubeResource.data.items[0].snippet.thumbnails.medium.url;
         // video.duration = td.parse(youTubeResource.data.items[0].contentDetails.duration);
-        console.assert(youTubeResource, "NO RESOURCE RETURNED")
         return Response.json(youTubeResource.data.items[0].id.videoId);
     } catch (error) {
         console.error("THAT BROKE IT" + ` Error: ${error}`)
