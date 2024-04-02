@@ -14,6 +14,6 @@ module.exports = {
         ]
     },
     images: {
-      domains: ['i.ytimg.com'],
+      domains: ['i.ytimg.com', 'media.tenor.com'],
     },
 };
