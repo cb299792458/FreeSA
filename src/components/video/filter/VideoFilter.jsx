@@ -1,3 +1,5 @@
+import { faArrowUpShortWide, faArrowUpWideShort } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './VideoFilter.scss';
 
 export const durationMap = {
@@ -99,7 +101,7 @@ export default function VideoFilter({filter}){
             </details>
             <h3>Sort 
                 <button name="sort" onClick={() => {setSortDir(sortDir === "asc" ? "desc" : "asc")}}>
-                    {sortDir === "asc" ? <i className="fa-solid fa-arrow-up-short-wide"></i> : <i className="fa-solid fa-arrow-down-wide-short"></i>}
+                    {sortDir === "asc" ? <FontAwesomeIcon icon={faArrowUpShortWide} /> : <FontAwesomeIcon icon={faArrowUpWideShort} />}
                 </button>
             </h3>
             <div>
