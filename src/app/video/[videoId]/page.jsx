@@ -21,25 +21,38 @@ export default async function VideoShow({ params }){
     };
 
     await fetchData().catch((err) => notFound());
-    
     return(
         <main>
+
             <section id="video-left">
-                <h1>{video.num}. {video.title}</h1><br/>
+                <Link href="/home">Home</Link><br/>
+                {video.tag &&
+                <>
+                    <h5>Videos tagged '{video.tag}'</h5>
+                    <nav style={{display: "flex", flexDirection: "column"}}>
+                        {Object.entries(relatedVideos).filter(([id, vid]) => vid.tag === video.tag).map(([id, video]) => {
+                            return <Link key={id} href={`./${video.num}`}>{video.num +". "+video.title}</Link>
+                        })}
+                    </nav>
+                </>
+                }
+                <details open={!video.tag}>
+                    <summary style={{cursor: "pointer"}}>
+                        <h5 style={{display: "inline"}}>More Videos</h5>
+                    </summary>
+                    <nav style={{display: "flex", flexDirection: "column"}}>
+                        {Object.entries(relatedVideos).map(([id, video]) => {
+                            return <Link key={id} href={`./${video.num}`}>{video.num +". "+video.title}</Link>
+                        })}
+                    </nav>
+                </details>
+            </section>
+            <section id="video-right">
+                <h1>{video.title}</h1>
+                <h5># {video.num}</h5>
                 <VideoPlayer video={video} />
                 <Comments video={video} />
                 {/* <ProgressToggle videoId={videoId}/> */}
-            </section>
-
-            <section id="video-right">
-                <h5>Navigation</h5>
-                <Link href="/">Home</Link><br/>
-                <nav style={{display: "flex", flexDirection: "column"}}>
-                    <Link href="./index">All Videos</Link>
-                    {Object.entries(relatedVideos).map(([id, video]) => {
-                        return <Link key={id} href={`./${video.num}`}>{video.num +". "+video.title}</Link>
-                    })}
-                </nav>
             </section>
         </main>
     )
