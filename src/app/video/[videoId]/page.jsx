@@ -28,7 +28,7 @@ export default async function VideoShow({ params }){
                 <Link href="/home">Home</Link><br/>
                 {video.tag &&
                 <>
-                    <h5>Videos tagged '{video.tag}'</h5>
+                    <h5>Videos tagged &apos;{video.tag}&apos;</h5>
                     <nav style={{display: "flex", flexDirection: "column"}}>
                         {Object.entries(relatedVideos).filter(([id, vid]) => vid.tag === video.tag).map(([id, video]) => {
                             return <Link key={id} href={`./${video.num}`}>{video.num +". "+video.title}</Link>
