@@ -2,9 +2,11 @@ import ProgressToggle from "@/components/ProgressToggle";
 import "./VideoPlayer.scss"
 
 
-export default function Video({ video }){
-    const { num, difficulty, ytUrl } = video;
-    const ytId = ytUrl?.split("/").at(-1);
+export default function Video({ video, ytId }){
+    if(video){
+        var { num, difficulty, ytUrl } = video;
+        ytId = ytUrl?.split("/").at(-1);
+    }
 
     return(
         <div id="video-container">
@@ -16,11 +18,11 @@ export default function Video({ video }){
                 allowFullScreen
             />
 
-            <div id="video-details">
+            {video && <div id="video-details">
                 <a href={video.lcUrl}>Try it on LeetCode?</a>
                 <ProgressToggle videoId={num} />
                 <p>Difficulty: {difficulty.toUpperCase()}</p>
-            </div>
+            </div>}
         </div>
     )
 }
